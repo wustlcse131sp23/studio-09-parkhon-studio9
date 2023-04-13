@@ -1,8 +1,11 @@
 package studio9;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import support.cse131.NotYetImplementedException;
 
@@ -28,9 +31,33 @@ public class WordCount {
 	 *         associated with the number of occurrences of the word
 	 */
 	public static Map<String, Integer> countWords(List<String> words) {
+			Map<String, Integer> count = new HashMap <>();
+			for (int i = 0; i < words.size(); i++)
+			{
+				String word = words.get(i);
+				if (count.containsKey(word))
+				{	
+					int number = count.get(word);
+					count.put(word, number + 1);
+				}
+				else
+				{
+					count.put(word, 1);
+				}
+			}
+			return count;
+	}
+	
+	public static void main(String[] args) {
 
-		// FIXME
-		throw new NotYetImplementedException();
+		List<String> words = new ArrayList<>();
+			
+		words.addAll(Arrays.asList("to","be","or","not","to","be","be"));
 
+		
+		Map<String, Integer> countWord = countWords(words);
+		System.out.println(words);
+		System.out.println(countWord);
+		
 	}
 }
